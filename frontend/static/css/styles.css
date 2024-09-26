@@ -1,0 +1,54 @@
+/* Custom styles for the patient list page */
+
+/* Body styles */
+body {
+    background-color: #f8f9fa; /* Light background */
+    padding: 20px; /* Add some padding */
+}
+
+/* Header styles */
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    color: #343a40; /* Dark gray */
+}
+
+/* Centering the table */
+.table-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column;
+    min-height: 70vh; /* Adjust based on your design */
+}
+
+/* Table styles */
+.table {
+    margin-top: 20px;
+    border: 1px solid #dee2e6; /* Light border */
+    width: 80%; /* Adjust width as needed */
+}
+
+.table th {
+    background-color: #DC143C; /* Bootstrap primary color */
+    color: white;
+}
+
+.table td {
+    vertical-align: middle; /* Center align content */
+}
+
+/* Button styles */
+.btn-primary {
+    margin-bottom: 20px; /* Add space below the button */
+}
+
+/* Link styles */
+a {
+    color: #8B0000; /* Bootstrap link color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

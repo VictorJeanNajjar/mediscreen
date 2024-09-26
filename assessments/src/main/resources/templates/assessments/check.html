@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Assessment Result</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Diabetes Assessment</h2>
+
+    <div class="result-message">
+        <h4 th:text="${message}">Assessment message will be displayed here.</h4>
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-primary" href="/assessment/patientList">Patient List</a>
+    </div>
+</div>
+</body>
+</html>

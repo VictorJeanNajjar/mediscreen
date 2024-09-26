@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Notes</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Patient Notes</h1>
+
+    <!-- Display Patient ID -->
+    <h4>Patient ID: <span th:text="${patientId}"></span></h4>
+    <h2 th:text="${patientFullName}"></h2>
+
+    <!-- Display existing doctor notes or message if empty -->
+    <div th:if="${#lists.isEmpty(currentPatientDocNotes)}">
+        <p>No doctor notes yet.</p>
+    </div>
+    <div th:if="${!#lists.isEmpty(currentPatientDocNotes)}">
+        <p>Here are the existing doctor notes:</p>
+        <ul>
+            <li th:each="note : ${currentPatientDocNotes}">
+                <span th:text="${note}"></span>
+
+                <!-- Remove button for each note -->
+                <form th:action="@{/docNotes/remove/{patientId}(patientId=${patientId})}" method="post" style="display: inline;">
+                    <input type="hidden" name="note" th:value="${note}" />
+                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                </form>
+    <!-- Update button and form for each note -->
+                <form th:action="@{/docNotes/update/{patientId}(patientId=${patientId})}" method="post" style="display: inline;">
+                    <input type="hidden" name="oldNote" th:value="${note}" />
+                    <div class="form-group">
+                        <input type="text" name="newNote" class="form-control" placeholder="Update note" required />
+                    </div>
+                    <button type="submit" class="btn btn-warning btn-sm">Update</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Form to add new notes -->
+    <div class="mt-4">
+        <h3>Add New Note:</h3>
+        <form th:action="@{/docNotes/add/{patientId}(patientId=${patientId})}" method="post">
+            <div class="form-group">
+                <textarea class="form-control" name="notes" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Note</button>
+        </form>
+    </div>
+
+    <!-- Back to patient list -->
+    <a href="/docNotes/patientList" class="btn btn-secondary mt-4">Back to Patient List</a>
+</div>
+</body>
+</html>
